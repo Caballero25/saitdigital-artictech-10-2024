@@ -1,0 +1,73 @@
+{% extends "base/base_adminlte.html" %}
+{% load static %}
+
+{% block extra_head %}
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<link rel="stylesheet" href="{% static '/css/user/login.css' %}">
+{% endblock %}
+{% block title %}Iniciar Sesión {% endblock %}
+{% block content %}
+    <section class="h-100 gradient-form" style="background-color: #eee;">
+        {% if error|length > 1 %}
+            <div class="alert alert-warning" role="alert">
+                {{error}}
+            </div>
+        {% endif %}
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+              <div class="card rounded-3 text-black">
+                <div class="row g-0">
+                  <div class="col-lg-6">
+                    <div class="card-body p-md-5 mx-md-4">
+      
+                      <div class="text-center">
+                        <img src="{% static 'img/logo_transparent_background.png' %}"
+                          style="width: 185px; border-radius: 100%;" alt="logo">
+                        <h4 class="mt-1 mb-5 pb-1">Nosotros somos el equipo Art Ic</h4>
+                      </div>
+      
+                      <form action="{% url 'login-url' %}" method="POST">
+                        {% csrf_token %}
+                        <strong>Por favor, ingrese sus creedenciales</strong><hr>
+      
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="text" id="username" class="form-control" name="username"
+                            placeholder="Nombre de Usuario" />
+                          <label class="form-label" for="form2Example11">Nombre de Usuario</label>
+                        </div>
+      
+                        <div data-mdb-input-init class="form-outline mb-4">
+                          <input type="password" id="password" class="form-control" name="password" />
+                          <label class="form-label" for="form2Example22">Contraseña</label>
+                        </div>
+      
+                        <div class="text-center pt-1 mb-5 pb-1">
+                          <button type="submnit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3">Log
+                            in</button>
+                          <small class="text-muted">Recordatorio: Si olvidó sus creedenciales, por favor comuníquese con su administrador.</small>
+                        </div>
+      
+                        <div class="d-flex align-items-center justify-content-center pb-4">
+                          <p class="mb-0 me-2">Sistema exclusivo para clientes de la empresa Art Ic Tech</p>
+                        </div>
+      
+                      </form>
+      
+                    </div>
+                  </div>
+                  <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                    <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                      <h4 class="mb-4 misionLogin">Somos más que una compañia</h4>
+                      <p class="small mb-0 misionLogin misionText">Desarrollamos soluciones tecnológicas avanzadas para mejorar la seguridad, 
+                        eficiencia y conectividad en los vehículos, redefiniendo la experiencia automotriz. Aspiramos a ser líderes 
+                        globales en tecnología e innovación, anticipando las necesidades del futuro y construyendo un mundo más inteligente y conectado.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+{% endblock %}

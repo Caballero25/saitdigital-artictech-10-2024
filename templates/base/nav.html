@@ -1,0 +1,147 @@
+  {% load static %}
+
+  {% block extra_head %}
+    <script>
+      $(document).ready(function() {
+        
+      });
+    </script>
+  {% endblock %}
+
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <div class="container">
+      <a href="{% url 'home-url' %}" class="navbar-brand">
+        <img src="{% static 'img/logo_transparent_background-noletters.png' %}" alt="Art Ic Tech Logo" class="brand-image img-circle elevation-0" style="border-radius: 20%; width: 60px; height: 45px;">
+        <span class="brand-text font-weight-light">Art Ic Tech</span>
+      </a>
+
+      <button  class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" >
+        <span style="width: 23px;" class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="#" class="nav-link">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Conócenos</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">Nuestros Servicios</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Archivos Binarios</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="#" class="dropdown-item">Archivo Binario 1</a></li>
+              <li><a href="#" class="dropdown-item">Archivo Binario 2</a></li>
+            </ul>
+          </li>
+
+          <!--Our Products-->
+          <li class="nav-item dropdown">
+            <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Nuestros Productos</a>
+            <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              <li><a href="#" class="dropdown-item">Descubrir</a></li>
+              <li class="dropdown-divider"></li>
+              <li><a href="#" class="dropdown-item">Productos</a></li>
+              <li><a href="#" class="dropdown-item">Licencias</a></li>
+
+            
+            </ul>
+          </li>
+        </ul>
+
+      </div>
+
+      <!-- Right navbar links -->
+      <ul class="order-1 mr-4 order-md-3 navbar-nav navbar-no-expand ml-auto">
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="fas fa-comments"></i>
+            <span class="badge badge-danger navbar-badge">3</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <a href="#" class="dropdown-item">
+              <!-- Message Start -->
+              <div class="media">
+                <img src="{% static 'img/logo_transparent_background-noletters.png' %}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                <div class="media-body">
+                  <h3 class="dropdown-item-title">
+                    Brad Diesel
+                    <span class="float-right text-sm text-danger"><i class="fas fa-star"></i></span>
+                  </h3>
+                  <p class="text-sm">Call me whenever you can...</p>
+                  <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i> 4 Hours Ago</p>
+                </div>
+              </div>
+              <!-- Message End -->
+            </a>
+            <div class="dropdown-divider"></div>
+            
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
+          </div>
+        </li>
+        <!-- Icon User -->
+        <li class="nav-item dropdown">
+            {% if request.user.is_authenticated %}
+            <a class="nav-link" data-toggle="dropdown" href="#">
+                <i class="fas fa-user" style="color: green;"></i> 
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <button id="perfilUserButton" href="#" class="dropdown-item disabled">
+                <!-- Message Start -->
+                <div class="media">
+                  <img src="{% static 'img/user_authenticated.png' %}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <div class="media-body">
+                    <h3 class="dropdown-item-title">
+                      {{request.user.username}}
+                    </h3>
+                    <p class="text-sm">{{request.user.email}}</p>
+                    <p class="text-sm text-muted"><i class="far fa-clock mr-1"></i>Miembro desde: {{request.user.date_joined|date:"M, Y"}}</p>
+                  </div>
+                </div>
+                <!-- Message End -->
+              </button>
+              <div class="dropdown-divider"></div>
+              
+              <div class="dropdown-divider"></div>
+              <a href="{% url 'logout-url' %}" class="dropdown-item dropdown-footer" style="background-color: rgba(146, 42, 42, 0.938); color: white;">Cerrar Sesión</a>
+            </div>
+            {% else %}
+
+            <a class="nav-link" data-toggle="dropdown" href="#">          
+                <i class="fas fa-user" style="color: grey;"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+              <button id="perfilUserButton" href="#" class="dropdown-item disabled">
+                <!-- Message Start -->
+                <div class="media">
+                  <img src="{% static 'img/user_no_authenticated.png' %}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+                  <div class="media-body">
+                    
+                    <h3 class="dropdown-item-title mt-3">
+                       Sin sesión iniciada
+                    </h3>
+                    
+                  </div>
+                </div>
+                <!-- Message End -->
+              </button>
+              <div class="dropdown-divider"></div>
+              
+              <div class="dropdown-divider"></div>
+              <a href="{% url 'login-url' %}" class="dropdown-item dropdown-footer" style="background-color: rgba(99, 99, 99, 0.938); color: white;">Iniciar Sesión</a>
+            </div>
+
+            {% endif %}
+          </li>
+      </ul>
+      
+    </div>
+  </nav>
+  <!-- /.navbar -->
