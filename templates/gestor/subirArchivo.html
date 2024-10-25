@@ -1,0 +1,104 @@
+{% extends 'base/base_adminlte.html' %} {% block title %}Subir Archivo{% endblock %} 
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/gestor/uploadArchivo.css' %}" />
+<!--<link
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  rel="stylesheet"
+/-->
+<!--script src="https://code.jquery.com/jquery-3.5.1.min.js"></script-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href=
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href=
+"https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap">
+<script src="{% static 'js/gestor/cargarDocumento.js' %}"></script>
+<script>
+  $(document).ready(function () {
+    $("#formulario-archivo").submit(function (e) {
+      e.preventDefault();
+
+      var formData = new FormData();
+      var archivo = $("#fileInput")[0].files[0]; // Guardar el archivo seleccionado
+      formData.append("archivo", archivo);
+
+      $.ajax({
+        url: '{% url "subirArchivo" %}',
+        type: "POST",
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+          // Manejar la respuesta exitosa
+          $("#mensaje").text("Archivo subido con éxito");
+
+          // Crear un enlace de descarga del archivo renombrado
+          var url = response.archivo_url;
+          var a = document.createElement("a");
+          a.href = url;
+          var nombreModificado = url.replace("/media/copias/", "");
+          a.textContent = "Descargar " + nombreModificado; // Agregar texto al enlace
+          // Añadir estilos al enlace
+          a.style.color = "blue";
+          a.style.textDecoration = "none";
+          a.classList.add("link")
+
+          // Agregar el enlace al elemento con la clase "descargar"
+          $(".descargar").append(a);
+        },
+        error: function (response, xhr, status, error) {
+          alert("Algo salió mal")
+          $("#mensaje").text("Error al subir el archivo: " + error);
+        },
+      });
+    });
+  });
+</script>
+{% endblock %} 
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <form id="formulario-archivo" enctype="multipart/form-data">
+              {% csrf_token %}
+          <div class="card">
+              <h1 class="app-title">
+                  <i class="fas fa-file-upload"></i>
+                  Art Ic Tech.
+              </h1>
+              <h3 class="app-subtitle">
+                  Cargar archivo binario
+              </h3>
+              <label for="fileInput" class="file-label">
+                  <i class="fas fa-cloud-upload-alt"></i> 
+              Seleccionar Archivo
+              </label>
+              <input type="file" id="fileInput" class="file-input" />
+              <div class="progress-container">
+                  <div class="progress-bar" id="progressBar"></div>
+                  <div class="progress-text" id="progressText"></div>
+              </div>
+              <div class="file-details">
+                  <div class="file-name" id="fileName"></div>
+                  <button class="ml-2 clear-button" id="clearButton">
+                      <i class="fas fa-times"></i>
+                      Limpiar
+                  </button>
+              </div>
+              <div class="preview-container" id="previewContainer"></div>
+              <button class="btn btn-outline-info" id="sendFileButton" type="submit">Enviar</button>
+              <div class="descargar">
+
+              </div>
+          </div>
+          <div class="modal" id="myModal">
+              <span class="close" id="closeModal">&times;</span>
+              <img class="modal-content" id="uploadedImageModal">
+          </div>
+      </form>
+    </div>
+  </div>
+
+
+{% endblock %}

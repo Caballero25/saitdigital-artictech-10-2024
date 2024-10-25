@@ -42,6 +42,7 @@ DJANGO_APPS = [
 
 SYSTEM_APPS = [
     'home',
+    'gestorBinario',
 ]
 
 LIB_APPS = [
