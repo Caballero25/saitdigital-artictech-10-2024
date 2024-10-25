@@ -10,47 +10,43 @@ import smtplib
 import random
 import string
 import os
+import base64
 # Create your views here.
 
 @csrf_exempt
-def subirArchivo(request):
+def codificar_archivo(request, id):
+    #Verificamos que archivo debemos enviar al usuario
+    if id == "1":
+        #Offsets propuestos para cambiar el nombre
+        offsets_list = [0x82E0 ,0x3E0, 0x81E0, 0x72E0]
+        # Ruta del archivo .bin en la carpeta 'media'
+        ruta_archivo = os.path.join(settings.MEDIA_ROOT, 'FLASH_SM2TC1767_10SW0547001924V600-20240705-192259.bin')
+
+    # Lee el contenido del archivo .bin
+    with open(ruta_archivo, 'rb') as archivo:
+        contenido_bin = archivo.read()
     if request.method == 'POST' and request.FILES['archivo']:
         archivo = request.FILES['archivo']
         if archivo:
-            archivo.seek(0x3E0)
-            offset3E0 = archivo.read(17)
-            try:
-                offset3E0_ascii = offset3E0.decode('utf-8')
-            except UnicodeDecodeError:
-                try:
-                    offset3E0_ascii = offset3E0.decode('latin-1')
-                except UnicodeDecodeError:
-                    offset3E0_ascii = offset3E0.hex()
-            try:
-                archivoUnic = ArchivoUnico.objects.filter(archivoUnico__contains="ASH_SM2TC1767_10SW0547001924V600-202407").first()
-                archivoX = archivoUnic.archivoUnico
-                directorio_destino = os.path.join(settings.MEDIA_ROOT, 'copias')
-                fs = FileSystemStorage(location=directorio_destino)
-                nombre_archivo = fs.save(auditarNombreArchivo(offset3E0_ascii)+".bin", archivoX)
-                print(nombre_archivo)
-            except:
-                print(8)
-                return JsonResponse({'error': 'No se pudo emcontrar el archivo'}, status=400)
-            nuevoArchivo = ArchivoBinarioChangeName.objects.create(
-                nombreAntiguo=str(archivoUnic.archivoUnico.name),
-                offset0x3E0=offset3E0_ascii,
-                archivo="copias/"+nombre_archivo
-            )
-            nuevoArchivo.save()
-            archivo_url = nuevoArchivo.archivo.url
-            print("archivo url" + archivo_url)
-            correo(request.user.username, request.user.email, nuevoArchivo.nombreAntiguo, nuevoArchivo.archivo.name)
-            return JsonResponse({'mensaje': 'Archivo subido con éxito', 'archivo_url': archivo_url, 'nuevoNombre': nuevoArchivo.offset0x3E0})
-    return JsonResponse({'error': 'No se pudo subir el archivo'}, status=400)
+            for offset in offsets_list:
+                archivo.seek(offset)
+                offset17 = archivo.read(17)
+                offset17_ascii = offset17.decode('utf-8')
+                if any(char.isalnum() for char in offset17_ascii):
+                    print("offset legible")
+                    contenido_base64 = base64.b64encode(contenido_bin).decode('utf-8')
+                    correo(request.user.username, request.user.email, nuevoArchivo.nombreAntiguo, nuevoArchivo.archivo.name)
+                    return JsonResponse({
+                        'nombre_archivo': offset17_ascii,
+                        'contenido': contenido_base64
+                    })
+                else:
+                    print("offset no legible")
+                    continue
 
     
 @login_required
-def subirArchivoTemplate(request):
+def subirArchivoTemplate_1(request):
     return render(request, "gestor/subirArchivo.html")
 
 @login_required

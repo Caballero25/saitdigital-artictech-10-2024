@@ -61,7 +61,11 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             reader.readAsArrayBuffer(file); // read as binary file
         } else {
-            alert('The selected file type is not allowed.');
+            Swal.fire({
+                title: "Archivo incorrecto",
+                text: "El archivo ingresado no tiene el formato esperado (.bin)",
+                icon: "info"
+              });
             fInput.value = '';
         }
     });
