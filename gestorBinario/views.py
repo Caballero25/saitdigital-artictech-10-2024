@@ -21,6 +21,12 @@ def codificar_archivo(request, id):
         offsets_list = [0x82E0 ,0x3E0, 0x81E0, 0x72E0]
         # Ruta del archivo .bin en la carpeta 'media'
         ruta_archivo = os.path.join(settings.MEDIA_ROOT, 'FLASH_SM2TC1767_10SW0547001924V600-20240705-192259.bin')
+    if id == "2":
+        #Offsets propuestos para cambiar el nombre
+        offsets_list = [0x200A0, 0x200E0, 0x21540, 0x21580, 0x292B0, 0x292F0, 0x2C630, 0x2C670]
+        # Ruta del archivo .bin en la carpeta 'media'
+        ruta_archivo = os.path.join(settings.MEDIA_ROOT, 'AIC_1AGWMAPP.bin')
+
 
     # Lee el contenido del archivo .bin
     with open(ruta_archivo, 'rb') as archivo:
