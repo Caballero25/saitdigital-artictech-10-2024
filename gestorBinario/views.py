@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
-from .models import ArchivoBinarioChangeName, ArchivosCatalogo, Notificacion, ArchivoUnico
+from .models import ArchivosCatalogo, Notificacion
 from django.core.files.storage import FileSystemStorage
 from django.db.models import Q
 import smtplib
@@ -65,24 +65,12 @@ def subirArchivoTemplate_1(request, id):
     return render(request, "gestor/subirArchivo.html", context)
 
 @login_required
-def catalogoArchivos(request): 
+def biblioteca(request): 
     archivos = ArchivosCatalogo.objects.filter(publico = True).order_by('-subido_en')
     context = {
         "archivos": archivos
     }
-    return render(request, 'catalogoArchivos.html', context)
-def auditarNombreArchivo(renombrar):
-    existeNombre = ArchivoBinarioChangeName.objects.filter(Q(nombreAntiguo=renombrar) | Q(offset0x3E0 = renombrar)).first()
-    if existeNombre:
-        editNombre = ''.join(random.choices(string.ascii_letters + string.digits, k=2))
-        existeNombreRandomx2 = ArchivoBinarioChangeName.objects.filter(Q(nombreAntiguo=(renombrar + editNombre)) | Q(offset0x3E0 = (renombrar + editNombre))).first()
-        if existeNombreRandomx2:
-            auditarNombreArchivo(existeNombreRandomx2)
-        else:
-            return renombrar + editNombre
-    else:
-        return renombrar
-    
+    return render(request, 'gestor/biblioteca.html', context)
     
     
 def correo(nombreUsuario, correoUsuario, nombreAntiguoArchivo, nombreNuevoArchivo):

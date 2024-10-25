@@ -24,7 +24,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a href="#" class="nav-link">Inicio</a>
+            <a href="{% url 'home-url' %}" class="nav-link">Inicio</a>
           </li>
           <li class="nav-item">
             <a href="#" class="nav-link">Conócenos</a>
@@ -37,6 +37,8 @@
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="{% url 'subirArchivoTemplate_1' 1 %}" class="dropdown-item">Wingle 7</a></li>
               <li><a href="{% url 'subirArchivoTemplate_1' 2 %}" class="dropdown-item">POER</a></li>
+              <div class="dropdown-divider"></div>
+              <li><a href="{% url 'biblioteca-url' %}" class="dropdown-item">Biblioteca</a></li>
             </ul>
           </li>
 

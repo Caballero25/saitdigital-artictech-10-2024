@@ -2,8 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to right,
-                        #3494E6, #0d37c4);
+    background: linear-gradient(135deg, #112236, #436280, #A3BAD2);
     height: 90vh;
     margin: 0;
     font-family: 'Montserrat', sans-serif;
@@ -37,15 +36,17 @@
     cursor: pointer;
     display: flexbox;
     padding: 7px;
-    background-color: #111111;
-    color: #fff;
+    background-color: #ffffff;
+    color: #0a0a0a;
     border-radius: 8px;
     margin-bottom: 60px;
     transition: background-color 0.3s;
+    border: 1px solid black;
 }
 
 .file-label:hover {
-    background-color: #6d6a9b;
+    background-color: #436280;
+    color: rgb(255, 255, 255);
 }
 
 .file-input {

@@ -1,0 +1,88 @@
+{% extends 'base/base_adminlte.html' %} {% block title %}Art Ic Tech | Biblioteca{% endblock %} 
+{% load static %}
+{% block extra_head %}
+
+<style>
+
+body {
+  background: #eee;
+}
+
+/* Estilos para file-box */
+.file-box {
+  float: left;
+  width: 220px;
+  margin: 0 0 20px 20px;
+}
+
+/* Estilos para file */
+.file {
+  border: 1px solid #e7eaec;
+  padding: 0;
+  background-color: #ffffff;
+  position: relative;
+}
+
+/* Estilos para image */
+.file .image {
+  height: 120px;
+  overflow: hidden;
+}
+
+/* Estilos para img-responsive */
+.img-responsive {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Estilos para file-name */
+.file .file-name {
+  padding: 10px;
+  background-color: #f8f8f8;
+  border-top: 1px solid #e7eaec;
+  overflow: hidden;
+  max-height: 68.5px;
+  overflow-y: auto; /* Habilita el desplazamiento vertical */
+}
+
+.file-name small {
+  color: #676a6c;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container mt-2">
+    <div class="row mb-4">
+        <div class="col text-center">
+            <h2>Biblioteca de Archivos Art Ic Tech.</h2>
+        </div>
+    </div>
+{% for file in archivos %}
+    <div class="file-box">
+        <div class="file">
+            <a href="{{file.archivo.url}}" download="{{file.archivo.name}}">
+                <div class="image">
+                    <img alt="image" class="img-responsive" src="{% static 'images/file_art.png' %}">
+                </div>
+                <p class="file-name">
+                    {{ file.archivo.name|slice:":30" }}
+                    <br>
+                    <small>{{file.subido_en|date:"d/m/Y"}}</small>
+                </p>
+            </a>
+        </div>
+    </div>
+{% endfor %}
+</div>
+
+{% endblock %}
