@@ -1,4 +1,4 @@
-{% extends 'base/base_adminlte.html' %} {% block title %}Subir Archivo{% endblock %} 
+{% extends 'base/base_adminlte.html' %} {% block title %}{{nombre_modulo}}{% endblock %} 
 {% load static %}
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/gestor/uploadArchivo.css' %}" />
@@ -25,7 +25,7 @@
       formData.append("archivo", archivo);
 
       $.ajax({
-        url: '{% url "subirArchivoUno" 1 %}',
+        url: '{% url "subirArchivoUno" idArchivo %}',
         type: "POST",
         data: formData,
         processData: false,
@@ -37,7 +37,7 @@
         const enlaceDescarga = document.createElement('a');
         enlaceDescarga.href = 'data:application/octet-stream;base64,' + contenidoBase64;
         enlaceDescarga.download = nombreArchivo + ".bin";
-        enlaceDescarga.textContent = "Descargar " + nombreArchivo + ".bin"; // Agregar texto al enlace
+        enlaceDescarga.textContent = "{{nombre_modulo}}: " + nombreArchivo + ".bin"; // Agregar texto al enlace
         // Añadir estilos al enlace
         enlaceDescarga.style.color = "blue";
         enlaceDescarga.style.textDecoration = "none";

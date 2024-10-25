@@ -35,7 +35,7 @@ def codificar_archivo(request, id):
                 if any(char.isalnum() for char in offset17_ascii):
                     print("offset legible")
                     contenido_base64 = base64.b64encode(contenido_bin).decode('utf-8')
-                    correo(request.user.username, request.user.email, nuevoArchivo.nombreAntiguo, nuevoArchivo.archivo.name)
+                    #correo(request.user.username, request.user.email, nuevoArchivo.nombreAntiguo, nuevoArchivo.archivo.name)
                     return JsonResponse({
                         'nombre_archivo': offset17_ascii,
                         'contenido': contenido_base64
@@ -46,8 +46,17 @@ def codificar_archivo(request, id):
 
     
 @login_required
-def subirArchivoTemplate_1(request):
-    return render(request, "gestor/subirArchivo.html")
+def subirArchivoTemplate_1(request, id):
+    if id == "1":
+        #Nombre modulo 
+        nombreModulo = 'Wingle7'
+    elif id == "2":
+        nombreModulo = 'POER'
+    context = {"idArchivo": id,
+                "nombre_modulo": nombreModulo
+               }
+
+    return render(request, "gestor/subirArchivo.html", context)
 
 @login_required
 def catalogoArchivos(request): 
