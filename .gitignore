@@ -1,3 +1,6 @@
 *.pyc
 __pycache__/
 /migrations/
+home/__pycache__/*
+artic/__pycache__/*
+home/migrations/__pycache__/*
