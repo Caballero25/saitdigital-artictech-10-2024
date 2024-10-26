@@ -22,20 +22,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!--SweetAlert-->
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+  <style>
+    .main-wrapper {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      margin: 0;
+      background: #eee;
+    }
+    .main-wrapper:last-child {
+      margin-top: auto;
+    }
+  </style>
+
   {% block extra_head %}
   {% endblock %}
 </head>
 <body class="hold-transition layout-top-nav" style="margin: 0px; padding: 0px; max-width: 100vw;">
-<div class="wrapper" style="min-height: 100vh;">
+<div class="wrapper main-wrapper">
 
-{% include 'base/nav.html' %}
+  {% include 'base/nav.html' %}
 
-{% block content %}
+  {% block content %}
 
-{% endblock %}
+  {% endblock %}
 
-<!-- Main Footer -->
-{% include 'base/footer.html' %}
+  <!-- Main Footer -->
+  {% include 'base/footer.html' %}
 </div>
 <!-- ./wrapper -->
 
