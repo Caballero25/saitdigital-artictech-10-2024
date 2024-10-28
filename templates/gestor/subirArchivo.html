@@ -57,7 +57,7 @@
 </script>
 {% endblock %} 
 {% block content %}
-  <div class="container container-upload">
+  <div class="container-upload">
     <div class="row">
       <form id="formulario-archivo" enctype="multipart/form-data">
               {% csrf_token %}
@@ -66,6 +66,7 @@
                   <i class="fas fa-file-upload"></i>
                   Art Ic Tech.
               </h1>
+              <small>{{nombre_modulo}}</small>
               <h3 class="app-subtitle">
                   Cargar archivo binario
               </h3>
