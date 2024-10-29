@@ -43,6 +43,7 @@ DJANGO_APPS = [
 SYSTEM_APPS = [
     'home',
     'gestorBinario',
+    'ecommerce',
 ]
 
 LIB_APPS = [

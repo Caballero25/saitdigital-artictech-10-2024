@@ -5,4 +5,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('home.urls')),
     path('gestor/', include('gestorBinario.urls')),
+    path('tienda/', include('ecommerce.urls')),
 ]
