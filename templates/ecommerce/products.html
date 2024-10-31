@@ -81,14 +81,14 @@
     {% for producto in page_obj %}
     <div class="col-md-4 col-sm-6">
       <div class="card mb-30" style="height: 357px;">
-        <a class="card-img-tiles" href="#" data-abc="true">
+        <a class="card-img-tiles" href="#" data-abc="true" style="height: 200px;">
           <div class="inner">
             <div class="main-img">
               <img src="{{producto.imagen_izquierda.url}}" alt="Category" />
             </div>
             <div class="thumblist">
-              <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR9ceOBEvy4KhAjJDACBntiTFbTUWkr723Xmv0AfzT44e_6QO1g" alt="Category" /><img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFs6wi_-gFMRzw8lq3hmExAyGFYblH-DDUaZmujYttnmVdp6BL"
+              <img src="{{producto.imagen_derecha_1.url}}" alt="Category" /><img
+                src="{{producto.imagen_derecha_2.url}}"
                 alt="Category"
               />
             </div>
