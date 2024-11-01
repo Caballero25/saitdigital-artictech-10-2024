@@ -6,5 +6,5 @@ artic/__pycache__/*
 home/migrations/__pycache__/*
 media/*
 ecommerce/migrations/*
-ecommerce/migrations/*
-ecommerce/migrations/*
+home/migrations/*
+gestorBinario/migrations/*
