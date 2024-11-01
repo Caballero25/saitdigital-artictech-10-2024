@@ -4,3 +4,4 @@ __pycache__/
 home/__pycache__/*
 artic/__pycache__/*
 home/migrations/__pycache__/*
+media/*
