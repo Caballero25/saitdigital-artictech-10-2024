@@ -9,6 +9,10 @@
   .mt-100 {
     margin-top: 100px;
   }
+
+  .mt-50 {
+    margin-top: 50px;
+  }
   .card {
     border-radius: 7px !important;
     border-color: #e1e7ec;
@@ -76,7 +80,7 @@
 </style>
 {% endblock %} 
 {% block content %}
-<div class="container mt-100">
+<div class="container mt-50">
   <div class="row">
     {% for producto in page_obj %}
     <div class="col-md-4 col-sm-6">
@@ -96,8 +100,8 @@
         ></a>
         <div class="card-body text-center" style="display: flex; flex-direction: column;">
           <h4 class="card-title">{{producto.nombre}}</h4>
-          <p class="text-muted">Solo por {% if producto.en_oferta == True %} <s>${{producto.precio}}</s> <strong style="color: green;">${{producto.precio_oferta}}</strong> {% else %} {{producto.precio}}{% endif %}</p>
-          <a class="btn btn-outline-primary btn-sm" href="#" data-abc="true"
+          <p style="margin-top: auto;" class="text-muted">Solo por {% if producto.en_oferta == True %} <s>${{producto.precio}}</s> <strong style="color: green;">${{producto.precio_oferta}}</strong> {% else %} ${{producto.precio}}{% endif %}</p>
+          <a style="margin-top: auto;" class="btn btn-outline-primary btn-sm" href="#" data-abc="true"
             >Comprar Producto</a
           >
         </div>
@@ -105,26 +109,28 @@
     </div>
     {% endfor %}
     <!--Inicio borrar-->
-  <div>
+  <div class="row col-12">
     <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
   </div>
   
   <div>
+    <ul class="pagination">
       {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
       {% endif %}
   
       {% for num in page_obj.paginator.page_range %}
           {% if page_obj.number == num %}
-              <strong>{{ num }}</strong>
+              <li class="page-item"><a style="background-color: rgb(74, 55, 243); color: white;" class="page-link" href="?page={{ num }}">{{ num }}</a></li>
           {% else %}
-              <a href="?page={{ num }}">{{ num }}</a>
+              <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
           {% endif %}
       {% endfor %}
   
       {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">Siguiente</a>
+          <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
       {% endif %}
+    </ul>
   </div>
     <!--Fin borrar-->
   </div>
