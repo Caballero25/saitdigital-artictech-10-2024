@@ -27,6 +27,17 @@
     border-bottom: 1px solid #e1e7ec;
   }
 
+  .card-container {
+    transition: 0.3s;
+  }
+
+  .card-container:hover {
+    -webkit-box-shadow: -2px -2px 21px -4px #A3BAD2;
+-moz-box-shadow: -2px -2px 21px -4px #A3BAD2;
+box-shadow: -2px -2px 21px -4px #A3BAD2;
+  }
+
+
   a {
     color: #0da9ef;
     text-decoration: none !important;
@@ -84,8 +95,8 @@
   <div class="row">
     {% for producto in page_obj %}
     <div class="col-md-4 col-sm-6">
-      <div class="card mb-30" style="height: 357px;">
-        <a class="card-img-tiles" href="#" data-abc="true" style="height: 200px;">
+      <div class="card mb-30 card-container" style="height: 357px;">
+        <a class="card-img-tiles" href="{% url 'detail_template' 'producto' producto.id %}" data-abc="true" style="height: 200px;">
           <div class="inner">
             <div class="main-img">
               <img src="{{producto.imagen_izquierda.url}}" alt="Category" />
@@ -101,8 +112,8 @@
         <div class="card-body text-center" style="display: flex; flex-direction: column;">
           <h4 class="card-title">{{producto.nombre}}</h4>
           <p style="margin-top: auto;" class="text-muted">Solo por {% if producto.en_oferta == True %} <s>${{producto.precio}}</s> <strong style="color: green;">${{producto.precio_oferta}}</strong> {% else %} ${{producto.precio}}{% endif %}</p>
-          <a style="margin-top: auto;" class="btn btn-outline-primary btn-sm" href="#" data-abc="true"
-            >Comprar Producto</a
+          <a style="margin-top: auto;" class="btn btn-outline-primary btn-sm" href="{% url 'detail_template' 'producto' producto.id %}" data-abc="true"
+            >Más Información</a
           >
         </div>
       </div>

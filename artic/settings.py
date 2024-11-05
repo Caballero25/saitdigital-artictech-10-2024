@@ -47,10 +47,32 @@ SYSTEM_APPS = [
 ]
 
 LIB_APPS = [
-
+    'ckeditor',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + SYSTEM_APPS + LIB_APPS
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+    },
+    'producto': {
+        'toolbar': [
+            ['Bold', 'Italic', 'Underline'],       # Formato de texto
+            ['TextColor', 'BGColor'],               # Colores de texto y fondo
+            ['NumberedList', 'BulletedList'],      # Listas
+            ['Link', 'Unlink'],                    # Enlaces
+            ['Image', 'Table'],                    # Imágenes y tablas (si es necesario)
+            ['RemoveFormat'],                      # Limpiar formato
+            ['Source'],                            # Ver código fuente HTML
+        ],
+        'height': 200,
+        'width': '100%',
+        'extraPlugins': 'uploadimage',             # Habilita subir imágenes si lo necesitas
+    },
+}
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
