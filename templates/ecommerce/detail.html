@@ -2,6 +2,7 @@
 {% block title %}Art Ic Tech | Productos{%endblock %} 
 {% load static %} 
 {% block extra_head %}
+<script src="{% static 'js/ecommerce/cotizaciones.js' %}"></script>
 <style>
     body {
       background-color: #eee;
@@ -20,6 +21,7 @@
     .main-img img {
         border-radius: 20px;
         border: 1px solid #A3BAD2;
+        width: 200px;
     }
     .article_info {
         background-color: white;
@@ -52,15 +54,11 @@
     }
     // Define las funciones para cada opción
         function cotizarPorWhatsApp(titulo) {
-            // Código para la opción de WhatsApp
-            alert(`Cotizando por WhatsApp para: ${titulo}`);
-            // Aquí puedes agregar el código para redirigir o enviar la cotización por WhatsApp
+            cotizar_whatsaap(titulo)
         }
 
         function cotizarPorEmail(titulo) {
-            // Código para la opción de Email
-            alert(`Cotizando por Email para: ${titulo}`);
-            // Aquí puedes agregar el código para redirigir o enviar la cotización por Email
+            cotizar_email(titulo)
         }
   </script>
 {% endblock %}
