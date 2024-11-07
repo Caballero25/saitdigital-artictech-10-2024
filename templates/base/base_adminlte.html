@@ -33,6 +33,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     .main-wrapper:last-child {
       margin-top: auto;
     }
+    .main-header {
+        position: fixed!important;
+        width: 100%;
+    }
   </style>
 
   {% block extra_head %}
@@ -42,10 +46,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <div class="wrapper main-wrapper">
 
   {% include 'base/nav.html' %}
+  <div style="margin-top: 60px!important;">
+    {% block content %}
 
-  {% block content %}
-
-  {% endblock %}
+    {% endblock %}
+  </div>
 
   <!-- Main Footer -->
   {% include 'base/footer.html' %}
