@@ -1,0 +1,196 @@
+{% extends 'base/base_adminlte.html' %}
+{% block title %}Art Ic Tech | Productos{%endblock %} 
+{% load static %} 
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/landing/our_services.css' %}">
+<script>
+    $(document).ready(function () { 
+        $(".noclick").on( "click", function() {
+        event.preventDefault()
+     })
+    })
+    
+</script>
+
+{% endblock %}
+
+
+{% block content %}
+<section class="light" style="margin-top: 20px;">
+	<div class="container py-2">
+		<div class="h1 text-center text-dark" id="pageHeaderTitle">Lo que hacemos</div>
+
+		<article class="postcard light blue">
+			<button class="postcard__img_link" href="#">
+				<img class="postcard__img" src="{% static 'img/our_services/reprogramacion_Ecus_1.png' %}" alt="Image Title" />
+            </button>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title"><a class="noclick" href="#">Reprogramación de ECU's                </a></h1>
+				<div class="postcard__subtitle small">
+					<time datetime="2020-05-25 12:00:00">
+						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+					</time>
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">Si tu vehículo requiere una mejora o modificación, lo hacemos de manera segura y eficiente.
+
+                    Reprogramación y Actualización: La reprogramación de ECUs es fundamental para optimizar el rendimiento del motor, 
+                    mejorar la eficiencia del combustible y garantizar el cumplimiento de normativas. Realizamos actualizaciones de 
+                    software y ajustes personalizados para adaptarnos a tus necesidades específicas.</div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Seguro</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i>Eficiente</li>
+					<li class="tag__item play">
+						<i class="fas fa-play mr-2"></i>Personalizado
+					</li>
+				</ul>
+			</div>
+		</article>
+		<article class="postcard light blue">
+			<button class="postcard__img_link" href="#">
+				<img class="postcard__img" src="{% static 'img/our_services/reprogramacion_Ecus_2.png' %}" alt="Image Title" />	
+			</button>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title"><a class="noclick" href="#">Eficiencia en consumo de combustible para tu vehículo
+                </a></h1>
+				<div class="postcard__subtitle small">
+					<time datetime="2020-05-25 12:00:00">
+						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+					</time>
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">Conocemos los retos  y la problemática actual, es por ese motivo que queremos ayudarte a que rindan 
+                    tus ingresos y que disfrutes de viajes con tu familia. Mediante la reprogramación de la ECU de tu vehículo podemos lograr 
+                    eficiencia de consumo de combustible o incluso que puedas usar combustible de menor octanaje. Confía en nuestros profesionales 
+                    quienes realizan pruebas rigurosas para asegurar que la ECU funcione perfectamente y que tu vehículo recupere su rendimiento ideal.</div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Profesional</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i>Rendimiento</li>
+					<li class="tag__item play">
+						<i class="fas fa-play mr-2"></i>Eficacia
+					</li>
+				</ul>
+			</div>
+		</article>
+		<article class="postcard light blue">
+			<button class="postcard__img_link" href="#">
+				<img class="postcard__img" src="{% static 'img/our_services/BitBox1.png' %}" alt="Image Title" />
+            </button>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title"><a class="noclick" href="#">Somos distribuidores de BitBox
+                </a></h1>
+				<div class="postcard__subtitle small">
+					<time datetime="2020-05-25 12:00:00">
+						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+					</time>
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">BitBox permite la identificación, lectura y escritura de la memoria flash 
+                    interna de la ECU para diversos fines. 
+                    Funciona a través de interfaces de datos CAN bus o K-line utilizando un adaptador Pass-thru J2534.
+                    El paquete consta de una llave USB de protección y un software con un conjunto de complementos: módulos de software. 
+                    El sistema modular existente le permite acceder a las funciones de software necesarias sin un coste excesivo.</div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Seguro</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i>Accesible</li>
+					<li class="tag__item play">
+						<i class="fas fa-play mr-2"></i>Confiable
+					</li>
+				</ul>
+			</div>
+		</article>
+		<article class="postcard light yellow">
+			<button class="postcard__img_link" href="#">
+				<img class="postcard__img" src="{% static 'img/our_services/diagnostico_vehicular.jpeg' %}" alt="Image Title" />
+			</button>
+			<div class="postcard__text t-dark">
+				<h1 class="postcard__title yellow"><a class="noclick" href="#">Diagnóstico preciso en problemas con tu vehículo</a></h1>
+				<div class="postcard__subtitle small">
+					<time datetime="2020-05-25 12:00:00">
+						<i class="fas fa-calendar-alt mr-2"></i>Mon, May 25th 2020
+					</time>
+				</div>
+				<div class="postcard__bar"></div>
+				<div class="postcard__preview-txt">Tenemos métodos innovadores para el diagnóstico de fallas de tu vehículo.
+                    Diagnóstico Avanzado: Utilizamos herramientas de diagnóstico de última generación para identificar problemas 
+                    específicos en tu vehículo con precisión. 
+                    Nuestro enfoque detallado garantiza que cada componente defectuoso sea detectado y tratado adecuadamente.</div>
+				<ul class="postcard__tagbox">
+					<li class="tag__item"><i class="fas fa-tag mr-2"></i>Precisión</li>
+					<li class="tag__item"><i class="fas fa-clock mr-2"></i>Garantía</li>
+					<li class="tag__item play yellow">
+						<i class="fas fa-play mr-2"></i>Innovación
+					</li>
+				</ul>
+			</div>
+		</article>
+	</div>
+</section>
+
+
+<!--Info cards-->
+<div class="ag-format-container">
+    <div class="ag-courses_box">
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link noclick">
+          <div class="ag-courses-item_bg"></div>
+          <div class="ag-courses-item_title">
+            Reprogramación y Actualización de ECUs
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link noclick">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Distribuidores de BitBox
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link noclick">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Diagnóstico del sistema: sensores y actuadores
+          </div>
+
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link noclick">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Evaluación de las necesidades de tu vehículo
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link noclick">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Lectura de códigos de error con scanner profesional
+          </div>
+        </a>
+      </div>
+  
+      <div class="ag-courses_item">
+        <a href="#" class="ag-courses-item_link noclick">
+          <div class="ag-courses-item_bg"></div>
+  
+          <div class="ag-courses-item_title">
+            Dispositivos y herramientas diseñadas para el vehículo
+          </div>
+        </a>
+      </div>
+  
+    </div>
+  </div>
+{% endblock %}

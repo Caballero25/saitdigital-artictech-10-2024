@@ -6,6 +6,9 @@ from django.contrib.auth import authenticate, login, logout
 def home(request):
     return render(request, 'index.html')
 
+def our_services(request):
+    return render(request, 'landing/our_services.html')
+
 def userLogin(request):
     context = {}
     if request.method == "GET":
