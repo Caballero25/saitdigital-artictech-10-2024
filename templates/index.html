@@ -1,7 +1,145 @@
 {% extends 'base/base_adminlte.html' %}
+{% block title %}Art Ic Tech | Inicio{%endblock %} 
+{% load static %} 
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/landing/index.css' %}">
+<script>
+   function our_products(){ location.href ="{% url 'products_template' %}" }
+   function contact(){ 
+      var phoneNumber = "593989285770"
+      var whatsAppUrl = `https://wa.me/${phoneNumber}?text=Me%20interesa%20recibir%20una%20cotización%20`;
+      window.open(whatsAppUrl) 
+    }
+</script>
 
-{% block title %} Inicio {% endblock %}
+{% endblock %}
+
 
 {% block content %}
-    <h1 style="min-height: auto;">Index</h1>
+  <section class="banner">
+    <div class="container">
+      <div class="banner-text">
+        <h1 style="padding: 9px;">Bienvenido a ART IC TECH</h1>
+        <p style="padding: 9px;"><strong>
+          Tu socio líder en innovación tecnológica y desarrollos avanzados para la industria automotriz.</strong> Ofrecemos soluciones personalizadas que optimizan el rendimiento y la funcionalidad de tus vehículos.</p>
+        <button onclick="our_products()">Nuestros productos</button>
+        <button class="contactButton" onclick="contact()">Contáctanos</button>
+      </div>
+    </div>
+    <img class="banner-image" src="https://preview.ibb.co/bMi5Y6/banner_img.png" alt="monitoring" >
+  </section>
+  
+  <div class="container">
+    <div class="row">
+      <div class="mb-30 col-md-6 col-lg-4">
+        <div class="card">
+        <img class="card-icon" src="https://image.ibb.co/cFV8mR/monitoring.png" alt="monitoring" >
+        <h3 class="card-title">Distribuidores Oficiales</h3>
+        <p class="card-text">Somos distribuidores oficiales de los productos de la prestigiosa marca BITBOX. 
+          El catálogo incluye una variedad de dispositivos y herramientas diseñadas para mejorar la eficiencia y conectividad en el mundo digital y automotriz. Cada producto Bitbox está respaldado por calidad y tecnología de última generación.
+
+        </p>
+        
+        </div>
+      </div>
+      <div class="mb-30 col-md-6 col-lg-4">
+        <div class="card">
+        <img class="card-icon" src="https://image.ibb.co/jfmg6R/cloud_firewalls.png" alt="monitoring" >
+        <h3 class="card-title">Conectividad Avanzada para tu Auto</h3>
+        <p class="card-text">Mejora la interacción y conexión con tu vehículo con dispositivos que integran funciones 
+          inteligentes para una experiencia de manejo moderna y eficiente.</p>
+        </div>
+      </div>
+      <div class="mb-30 col-md-6 col-lg-4">
+        <div class="card">
+        <img class="card-icon" src="https://image.ibb.co/fcnzt6/team_management.png" alt="team management" >
+        <h3 class="card-title">Tecnología de Vanguardia para el Automóvil        </h3>
+        <p class="card-text">Integra lo último en innovación con herramientas diseñadas para llevar tu vehículo al siguiente nivel. 
+          Descubre cómo la tecnología puede transformar tu experiencia de conducción.</p>
+        </div>
+      </div>
+      <div class="mb-30 col-md-6 col-lg-4">
+        <div class="card">
+        <img class="card-icon" src="https://image.ibb.co/evyiLm/backups.png" alt="monitoring" >
+        <h3 class="card-title">Potencia Adicional en tu Vehículo</h3>
+        <p class="card-text">Aumenta la fuerza y capacidad de respuesta de tu motor. 
+          Nuestros productos te permiten contar con el torque necesario para realizar tus trabajos sin esfuerzo.</p>
+        </div>
+      </div>
+      <div class="mb-30 col-md-6 col-lg-4">
+        <div class="card">
+        <img class="card-icon" src="https://image.ibb.co/g9bERR/snapshots.png" alt="snapshots" >
+        <h3 class="card-title">Rendimiento y Confort en tus Viajes</h3>
+        <p class="card-text">Disfruta cada salida familiar con un vehículo optimizado. 
+          Nuestras soluciones mejoran la experiencia de conducción para que tu tiempo en la carretera sea más placentero.</p>
+        </div>
+      </div>
+      <div class="mb-30 col-md-6 col-lg-4">
+        <div class="card">
+        <img class="card-icon" src="https://image.ibb.co/cFV8mR/monitoring.png" alt="monitoring" >
+        <h3 class="card-title">Optimización de Consumo Energético</h3>
+        <p class="card-text">Maximiza el rendimiento de tu vehículo con nuestros dispositivos especializados 
+          que ayudan a reducir el gasto de combustible. Haz que cada trayecto sea más económico y eficiente.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Second section-->
+  <h2 class="titleSeconSection">Ventajas Clave de <span>Elegir Nuestros Servicios</span> y Productos Automotrices</h2>
+<div class="second-section-con">
+
+  <div class="timeline-block timeline-block-right">
+     <div class="marker"></div>
+     <div class="timeline-content">
+        <h3>Mayor Durabilidad del Motor</h3>
+        <span>Protege tu inversión a largo plazo</span>
+        <p>La reprogramación y los ajustes de la ECU ayudan a optimizar el comportamiento del motor, lo que reduce el desgaste y prolonga la 
+          vida útil del vehículo. Esto significa menor frecuencia en reparaciones y mayor confiabilidad.</p>
+     </div>
+  </div>
+
+  <div class="timeline-block timeline-block-left">
+     <div class="marker"></div>
+     <div class="timeline-content">
+        <h3>Control y Personalización</h3>
+        <span>Experiencia de manejo adaptada a ti</span>
+        <p>Con nuestras herramientas avanzadas, como las de BitBox, puedes personalizar el rendimiento de 
+          tu vehículo de acuerdo con tus preferencias, 
+          desde una mayor respuesta al acelerar hasta una conducción más suave en trayectos largos.</p>
+     </div>
+  </div>
+
+  <div class="timeline-block timeline-block-right">
+     <div class="marker"></div>
+     <div class="timeline-content">
+        <h3>Diagnóstico Preventivo Integral</h3>
+        <span>Anticípate a los problemas antes de que surjan</span>
+        <p>Nuestra tecnología de diagnóstico avanzado permite detectar fallas menores antes de que se conviertan en problemas costosos, 
+          ayudando a mantener tu vehículo en óptimas condiciones y a evitar interrupciones inesperadas.</p>
+     </div>
+  </div>
+
+  <div class="timeline-block timeline-block-left">
+     <div class="marker"></div>
+     <div class="timeline-content">
+        <h3>Menor Impacto Ambiental</h3>
+        <span>Conduce con conciencia ecológica</span>
+        <p>La optimización de la ECU no solo mejora la eficiencia del combustible, sino que también reduce las emisiones de 
+          gases contaminantes, contribuyendo a un menor impacto ambiental y a cumplir con las normativas más estrictas.</p>
+     </div>
+  </div>
+
+  <div class="timeline-block timeline-block-right">
+     <div class="marker"></div>
+     <div class="timeline-content">
+        <h3>Acceso a Soporte Especializado</h3>
+        <span>Confianza respaldada por expertos</span>
+        <p>Contar con nuestros servicios significa acceso a un equipo de profesionales capacitados que pueden asesorarte y brindar soluciones
+           rápidas ante cualquier necesidad de ajuste o diagnóstico, garantizando tranquilidad y un soporte de alta calidad.</p>
+     </div>
+  </div>
+</div>
+
+
 {% endblock %}

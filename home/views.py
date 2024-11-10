@@ -9,6 +9,9 @@ def home(request):
 def our_services(request):
     return render(request, 'landing/our_services.html')
 
+def about_us(request):
+    return render(request, 'landing/about_us.html')
+
 def userLogin(request):
     context = {}
     if request.method == "GET":

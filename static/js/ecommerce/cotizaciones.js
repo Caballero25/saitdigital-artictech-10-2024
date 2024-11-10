@@ -6,7 +6,7 @@ function cotizar_email(producto) {
 
 
 function cotizar_whatsaap(producto) {
-    var phoneNumber = "593962636961"
+    var phoneNumber = "593989285770"
     var whatsAppUrl = `https://wa.me/${phoneNumber}?text=Me%20interesa%20recibir%20una%20cotización%20del%20producto%20*${producto}*`;
     //location.href = whatsAppUrl
     window.open(whatsAppUrl)
