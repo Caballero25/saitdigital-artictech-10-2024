@@ -1,111 +1,226 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,800');
+.container-about-us {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.container-about-us .info {
+  width: 50%;
+}
 
-html, body {
-  width: 100%;
-  height: 100%;
+/* Small */
+@media (min-width: 1007px) {
+  .container-about-us {
+    width: 750px;
+  }
+}
+/* Medium */
+@media (min-width: 992px) {
+  .container-about-us {
+    width: 970px;
+  }
+}
+/* Large */
+@media (min-width: 1200px) {
+  .container-about-us {
+    width: 1170px;
+  }
+}
+/* End Global Rules */
+
+/* Start Landing Page */
+.landing-page .content .container-about-us {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 140px;
+  min-height: calc(100vh - 80px);
+}
+@media (max-width: 1007px) {
+  .landing-page .content .container-about-us {
+    gap: 0;
+    min-height: calc(100vh - 101px);
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+}
+@media (max-width: 767px) {
+  .landing-page .content .info {
+    text-align: center;
+    margin-bottom: 15px 
+  }
+}
+.landing-page .content .info h1 {
+  color: #5d5d5d;
+  font-size: 44px;
+}
+.landing-page .content .info p {
   margin: 0;
-  padding: 0;
-  font-family: 'Nunito Sans', sans-serif;
+  line-height: 1.6;
+  font-size: 20px;
+  color: #5d5d5d;
 }
-
-.page {
-  witdh: 100vh;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #F1F1F1;
+.landing-page .content .info button {
+  border: 0;
+  border-radius: 20px;
+  padding: 12px 30px;
+  margin-top: 30px;
+  cursor: pointer;
+  color: #FFF;
+  background: #4b71ff;
 }
+.landing-page .content .image img {
+  max-width: 100%;
+  filter: drop-shadow(-2px 2px 15px #bfd8ff);
+}
+/* End Landing Page */
 
+
+/*MISION STYLES */
+
+/************/
+.mision-container {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: all .2s ease-in;
+	display: flex;
+  padding: 2%;
+  flex-direction: row;
+	align-items: center;
+}
 .card {
-  width: 960px;
-  height: 540px;
-  background-color: white;
-  box-shadow: 0px 50px 100px rgba(0, 0, 0, .4);
-  display: flex;
+	border-radius: 16px;
+	background-color: #fff;
+	width: 100%;
+	max-height: 100vh;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+  flex-direction: row;
+	overflow: hidden;
   align-items: center;
-  justify-content: center;
+  padding: 20px;
 }
 
-.container {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+.cta {
+	width: 60%;
+	padding: 32px;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	height: 100%;
+	
+	.mision-vision-title {
+		font-size: 3.5em;
+		margin: 0 0 16px 0;
+		text-transform: uppercase;		
+	}
+	
+	.description {
+		font-size: 1.25em;
+		margin: 0;
+	}
+	
+	.price {
+		display: flex;
+		align-items: center;
+	}
+	
+	.amount {
+		font-size: 2em;
+		margin-left: 8px;
+		font-family: "futura-pt",sans-serif;
+	}
+	
 }
 
-.menu {
-  width: 100%;
-  height: 10%;
+.img {
+	width: 40%;
+	height: 300px;
+	/*background-image: url('/static/img/file_art.png');*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+  border-radius: 10px;
+  box-shadow: #0d54e36b 0px 0px 40px 0px;
 }
 
-.menu h3 {
-  font-size: 1em;
-  margin-left: 25px;
-  font-weight: 800;
-  float: left;
+@media (max-width: 880px){
+	.card {
+		flex-direction: column;
+	}
+	
+	.cta {
+		height: 100%;
+		width: 100%;
+		max-width:640px;
+		margin: 0 auto;
+		
+		.mision-vision-title {
+			font-size: 2.5em;
+		}
+		
+		.description {
+			font-size: 1em;
+		}
+		
+		.amount {
+			font-size: 1.5em;
+		}
+		
+	}
+	
+	.img {
+		order:-1;
+		width: 100%;
+		height: 100%;
+	}
+	
 }
 
-i {
-  float: right;
-  font-size: 0.8em;
-  margin: 20px 25px;
-  transition: font-size 0.2s;
+@media (max-width: 512px){
+	
+	body {
+		padding: 7%;
+		transition: all .2s ease-in;
+	}
+	
+	.card {
+		max-height: 90vh;
+	}
+	
+	.cta h1 {
+		font-size: 2.5em;
+	}
+	
 }
 
-i:hover {
-  font-size: 1em;
+@media (max-width: 380px){
+	
+	
+	.cta {
+		
+		padding: 24px;
+		
+		.mision-vision-title {
+			font-size: 2em;
+		}
+	
+		button {
+			padding: 16px 0;
+			width: 100%;
+		}
+	}
 }
 
-.content {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.content .text {
-  margin-bottom: 50px;
-}
-
-.text h1 {
-  font-size: 2.5em;
-  line-height: 1;
-}
-
-.text p {
-  color: rgb(0,0,0,0.5);
-  margin-bottom: 40px;
-  margin-top: -5px;
-}
-
-.text a {
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
-  background-color: #fe864c;
-  transition: background-color 0.2s;
-  transition: color 0.2s;
-  padding: 10px 20px;
-  border: 2px solid #fe864c;
-}
-
-.text a:hover, .text a:active {
-  background-color: white;
-  color: #fe864c;
-}
-
-.photo {
-  height: 100%;
-  width: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-image: url("https://images.pexels.com/photos/33041/antelope-canyon-lower-canyon-arizona.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+@media (max-height: 764px){
+	
+	.card {
+		max-height: 100%;
+		height: 640px;
+	}
+	
 }

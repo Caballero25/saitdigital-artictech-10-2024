@@ -3,9 +3,28 @@
 {% load static %} 
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'css/landing/about_us.css' %}">
+<style>
+  label.label_testimonial-1:before {
+    background-image: url("{% static 'img/logo_transparent_background-noletters.png' %}");
+  }
+  label.label_testimonial-2:before {
+    background-image: url("{% static 'img/logo_transparent_background-noletters.png' %}");
+  }
+  .content_testimonial-1 .picto {
+    background-image: url("{% static 'img/logo_transparent_background-noletters.png' %}");
+   }
+   .content_testimonial-2 .picto {
+    background-image: url("{% static 'img/logo_transparent_background-noletters.png' %}");
+   }
+   .img {
+    background-image: url("{% static 'img/about_us/mision.jpg' %}");
+   }
+   #img2 {
+    background-image: url("{% static 'img/about_us/vision.jpg' %}");
+   }
+</style>
 <script>
-
-      
+function our_products(){ location.href ="{% url 'products_template' %}" }
 </script>
 
 {% endblock %}
@@ -15,17 +34,97 @@
       <!-- Start Landing Page -->
       <div class="landing-page">
         <div class="content">
-          <div class="container">
+          <div class="container container-about-us">
             <div class="info">
-              <h1>Looking For Inspiration</h1>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus odit nihil ullam nesciunt quidem iste, Repellendus odit nihil</p>
-              <button>Button name</button>
+              <h1>Estás en el lugar correcto</h1>
+              <p>En ART IC TECH, nos apasiona transformar el futuro con tecnología de vanguardia. 
+               Nos especializamos en el desarrollo de programación para automóviles.
+                Desde software avanzado hasta sistemas de integración innovadores,
+                 nuestro equipo está dedicado a impulsar la tecnología automotriz al siguiente nivel.</p>
+                 <button onclick="our_products()">Nuestros productos</button>
             </div>
             <div class="image">
-              <img src="https://i.postimg.cc/65QxYYzh/001234.png">
+              <img src="{% static 'img/about_us/hero_first_section.png' %}">
             </div>
           </div>
         </div>
       </div>
       <!-- End Landing Page -->
+
+
+
+        <!-- Testimonials -->
+        <section class="text-center experience_secondSection" style="padding: 7px;">
+          <div class="container">
+            <h2 class="mb-5">Experiencia Art IcTech</h2>
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <h5>Personal capacitado.</h5>
+                  <p class="font-weight-light mb-0">Nuestros técnicos están a la vanguardia de lo que hacemos. Cuando nos eliges, eliges la precisión.</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <h5>Rapidez y eficiencia.</h5>
+                  <p class="font-weight-light mb-0">Nuestras reparaciones eficientes tienen como objetivo devolverle sus dispositivos rápidamente para minimizar el tiempo de inactividad.</p>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="testimonial-item mx-auto mb-5 mb-lg-0">
+                  <h5>Tecnología de Punta.</h5>
+                  <p class="font-weight-light mb-0">Utilizamos equipos de diagnóstico y reparación avanzados para asegurar un servicio de alta calidad.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+
+
+<div class="mision-container">
+  <div class="card">
+    <div class="cta">
+      <h1 class="mision-vision-title">MISIÓN</h1>
+      <p class="description">Desarrollar soluciones tecnológicas avanzadas que redefinan la experiencia automotriz. Nos comprometemos a diseñar y ofrecer software y hardware de última generación que potencien la seguridad, la eficiencia y la conectividad en los vehículos, impulsando así la movilidad del futuro.</p>
+      <i class="price">Art Ic Tech</i>
+    </div>
+    <div class="img"></div>
+  </div>
+
+</div>
+<div class="mision-container">
+  <div class="card">
+    <div class="img" id="img2"></div>
+    <div class="cta">
+      <h1 class="mision-vision-title">VISIÓN</h1>
+      <p class="description">Ser líderes globales reconocidos por nuestra excelencia
+
+        en tecnología e innovación. Inspiramos y facilitamos el 
+       
+       progreso mediante soluciones avanzadas que anticipan
+       
+        las necesidades del mañana, construyendo un mundo 
+       
+       más inteligente y conectado.</p>
+      <i class="price">Art Ic Tech</i>
+    </div>
+    
+  </div>
+
+</div>
+        
+
+
+
+
+
+
+
+
+
+
+
+
 {% endblock %}
