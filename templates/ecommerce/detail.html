@@ -16,6 +16,9 @@
 
     .product_detail {
         text-align: center;
+        display: flex;
+        flex-direction: row;
+        justify-content:space-evenly;
     }
 
     .main-img img {
@@ -31,6 +34,18 @@
     .buttonCotizar:hover i {
         color: rgb(174, 174, 174);
     }
+    .product_info {
+        margin-left: 15px;
+    }
+    @media screen and (max-width: 560px) {
+        .product_detail {
+            flex-direction: column;
+            justify-content:space-evenly;
+        }
+        .product_info {
+        margin-left: 0px;
+    }
+     }
   </style>
 
   <script>
@@ -69,14 +84,15 @@
         <div class="main-img">
             <img src="{{producto.imagen_izquierda.url}}" alt="Category" />
         </div>
-        <h3 class="mt-3">
-            {{producto.nombre}}
-        </h3>
-        <p style="margin-top: auto;" class="text-muted">Solo por {% if producto.en_oferta == True %} <s>${{producto.precio}}</s> <strong style="color: green;">${{producto.precio_oferta}}</strong> {% else %} ${{producto.precio}}{% endif %}</p>
-        <button onclick="buttonCar( `{{producto.nombre}} `)" type="button" class="btn btn-outline-danger buttonCotizar" style="width: 200px;">
-            Cotizar ahora <i class="fa fa-shopping-cart"></i>
-        </button>
-
+        <div class="product_info">
+            <h3 class="mt-3">
+                {{producto.nombre}}
+            </h3>
+            <p style="margin-top: auto;" class="text-muted">Solo por {% if producto.en_oferta == True %} <s>${{producto.precio}}</s> <strong style="color: green;">${{producto.precio_oferta}}</strong> {% else %} ${{producto.precio}}{% endif %}</p>
+            <button onclick="buttonCar( `{{producto.nombre}} `)" type="button" class="btn btn-outline-danger buttonCotizar" style="width: 200px;">
+                Cotizar ahora <i class="fa fa-shopping-cart"></i>
+            </button>
+        </div>
     </div>
     {% for descripcion in descripciones %}
     <div class="col-10 article_info mt-5">
