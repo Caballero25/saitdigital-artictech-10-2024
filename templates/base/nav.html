@@ -6,6 +6,16 @@
         
       });
     </script>
+    <style>
+      .nav-link {
+        color: black!important;
+      }
+      .brand-text {
+        font-weight: bold;
+        color: #00106a!important;
+        margin-top: 2px;
+      }
+    </style>
   {% endblock %}
 
   <!-- Navbar -->
@@ -13,7 +23,7 @@
     <div class="container">
       <a href="{% url 'home-url' %}" class="navbar-brand">
         <img src="{% static 'img/logo_transparent_background-noletters.png' %}" alt="Art Ic Tech Logo" class="brand-image img-circle elevation-0" style="border-radius: 20%; width: 60px; height: 45px;">
-        <span class="brand-text font-weight-light">Art Ic Tech</span>
+        <span class="brand-text">Art Ic Tech</span>
       </a>
 
       <button  class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" >
