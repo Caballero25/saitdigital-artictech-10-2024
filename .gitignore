@@ -8,3 +8,4 @@ media/*
 ecommerce/migrations/*
 home/migrations/*
 gestorBinario/migrations/*
+artic/settings.py
