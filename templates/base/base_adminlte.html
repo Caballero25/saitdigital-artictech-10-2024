@@ -54,7 +54,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
 
   <!-- Main Footer -->
-  {% include 'base/footer.html' %}
+   {% block footer %}
+      {% include 'base/footer.html' %}
+   {% endblock %}
 </div>
 <!-- ./wrapper -->
 

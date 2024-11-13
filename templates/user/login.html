@@ -7,7 +7,7 @@
 {% endblock %}
 {% block title %}Iniciar Sesión {% endblock %}
 {% block content %}
-    <section class="h-100 gradient-form" style="background-color: #eee;">
+    <section class="h-100 gradient-form" style="background-color: #eee; min-height: 100vh;">
         {% if error|length > 1 %}
             <div class="alert alert-warning" role="alert">
                 {{error}}
@@ -70,4 +70,7 @@
           </div>
         </div>
       </section>
+      {% block footer %}
+        <!-- Sin footer -->
+      {% endblock footer %}
 {% endblock %}
