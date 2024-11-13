@@ -14,8 +14,8 @@ def products_template(request):
 
 
 def detail_template(request, tipo, id):
-    print(tipo)
     if tipo == 'producto':
         producto = Producto.objects.filter(disponible=True, pk=id).first()
         descripciones = Licencia_Producto.objects.filter(articulo=producto).all()
-        return render(request, 'ecommerce/detail.html', {'producto': producto, "descripciones": descripciones})
+        popular_licenses = Licencia_Producto.objects.filter(articulo=producto).all()[:4]
+        return render(request, 'ecommerce/detail.html', {'producto': producto, "descripciones": descripciones, "popular_licenses": popular_licenses})
