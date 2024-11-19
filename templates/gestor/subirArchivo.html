@@ -15,6 +15,7 @@
     $("#formulario-archivo").submit(function (e) {
       e.preventDefault();
       $(".descargar").empty()
+      $(".descargar").append("<p>Enviando...</p>");
 
       var formData = new FormData();
       var archivo = $("#fileInput")[0].files[0]; // Guardar el archivo seleccionado
@@ -38,6 +39,7 @@
         enlaceDescarga.style.color = "blue";
         enlaceDescarga.style.textDecoration = "none";
         enlaceDescarga.classList.add("link")
+        $(".descargar").empty()
         $(".descargar").append(enlaceDescarga);
         },
         error: function (response, xhr, status, error) {

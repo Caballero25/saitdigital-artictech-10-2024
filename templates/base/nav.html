@@ -45,9 +45,11 @@
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Archivos Binarios</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
+              {% if request.user.is_authenticated %}
               <li><a href="{% url 'subirArchivoTemplate_1' 1 %}" class="dropdown-item">Wingle 7</a></li>
               <li><a href="{% url 'subirArchivoTemplate_1' 2 %}" class="dropdown-item">POER</a></li>
               <div class="dropdown-divider"></div>
+              {% endif %}
               <li><a href="{% url 'biblioteca-url' %}" class="dropdown-item">Biblioteca</a></li>
             </ul>
           </li>
