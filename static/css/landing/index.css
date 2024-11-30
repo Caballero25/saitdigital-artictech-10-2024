@@ -39,7 +39,7 @@
         opacity: 0.5;
    }
 }
-@media (min-width: 992px) {
+@media (min-width: 1506px) {
     .banner .banner-image {
         height: 500px;
         top: -50px;
