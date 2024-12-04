@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import AvisosUsuario
+from .models import Ofertas_Usuario
 # Register your models here.
 
-admin.site.register(AvisosUsuario)
+admin.site.register(Ofertas_Usuario)

@@ -62,7 +62,7 @@ CKEDITOR_CONFIGS = {
             ['TextColor', 'BGColor'],               # Colores de texto y fondo
             ['NumberedList', 'BulletedList'],      # Listas
             ['Link', 'Unlink'],                    # Enlaces
-            ['Image', 'Table'],                    # Imágenes y tablas (si es necesario)
+            ['Table'],                    # Imágenes y tablas (si es necesario)
             ['RemoveFormat'],                      # Limpiar formato
             ['Source'],                            # Ver código fuente HTML
         ],
