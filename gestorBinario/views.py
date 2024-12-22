@@ -4,10 +4,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 from .models import ArchivosCatalogo, Notificacion
-from django.db.models import Q
 import smtplib
 import os
 import base64
+import re
 # Create your views here.
 
 @csrf_exempt
@@ -34,22 +34,24 @@ def codificar_archivo(request, id):
         contenido_bin = archivo.read()
     if request.method == 'POST' and request.FILES['archivo']:
         archivo = request.FILES['archivo']
+        contenido_subido = archivo.read()
+        patrones = ["8L4", "LGW"]
+        resultado = buscar_palabras_binario(contenido_subido, patrones)
+        if resultado:
+            print(resultado)
         if archivo:
-            for offset in offsets_list:
-                archivo.seek(offset)
-                offset17 = archivo.read(17)
-                offset17_ascii = offset17.decode('utf-8')
-                if any(char.isalnum() for char in offset17_ascii):
-                    print("offset legible")
-                    contenido_base64 = base64.b64encode(contenido_bin).decode('utf-8')
-                    correo(request.user.username, request.user.email, nombre_modulo)
-                    return JsonResponse({
-                        'nombre_archivo': offset17_ascii,
-                        'contenido': contenido_base64
-                    })
-                else:
-                    print("offset no legible")
-                    continue
+            print(str(archivo))
+            if resultado and len(resultado) > 2:
+                print("offset legible")
+                contenido_base64 = base64.b64encode(contenido_bin).decode('utf-8')
+                correo(request.user.username, request.user.email, nombre_modulo, str(archivo), str(resultado))
+                return JsonResponse({
+                    'nombre_archivo': resultado,
+                    'contenido': contenido_base64
+                })
+            else:
+                print("offset no legible")
+                
 
     
 @login_required
@@ -74,13 +76,16 @@ def biblioteca(request):
     return render(request, 'gestor/biblioteca.html', context)
     
     
-def correo(nombreUsuario, correoUsuario, nombre_modulo):
+def correo(nombreUsuario, correoUsuario, nombre_modulo, archivo_subido, offset):
+    print(f"Archivo subido: {archivo_subido} | Archivo entregado: {offset}")
     if correoUsuario == "" or correoUsuario == None:
         correoUsuario = "SIN CORREO ASIGNADO"
     try:
         mensaje = f"""
-            El usuario {nombreUsuario} con correo {correoUsuario} utilizó el sistema. \n
-            Módulo utilizado: {nombre_modulo}\n
+            El usuario {nombreUsuario} con correo {correoUsuario} utilizo el sistema. \n
+                Modulo utilizado: {nombre_modulo}\n
+                Archivo subido por el cliente fue: {archivo_subido} \n
+                Nombre de archivo entregado por el sistema fue: {offset}.bin \n
         """
         correo_electronico = 'soport@art-ic.tech'
         asunto = f"Un usuario utilizó el sistema | {nombre_modulo}"
@@ -94,10 +99,22 @@ def correo(nombreUsuario, correoUsuario, nombre_modulo):
     except:
         try:
             mensaje = f"""
-                El usuario {nombreUsuario} con correo {correoUsuario} utilizó el sistema. \n
-                Módulo utilizado: {nombre_modulo}\n
+                El usuario {nombreUsuario} con correo {correoUsuario} utilizo el sistema. \n
+                Modulo utilizado: {nombre_modulo}\n
+                Archivo subido por el cliente fue: {archivo_subido} \n
+                Nombre de archivo entregado por el sistema fue: {offset}.bin \n
+
+                <h1>HOLA MUNDO</h1>
             """
             new_notificacion = Notificacion.objects.create(mensaje=mensaje)
             new_notificacion.save()
         except:
             print("Ocurrió un error inesperado")
+
+def buscar_palabras_binario(contenido_binario, patrones, longitud_palabra=17):
+        palabra_final = ""
+        for i in range(len(contenido_binario) - longitud_palabra + 1):
+            posible_palabra = contenido_binario[i:i + longitud_palabra].decode("utf-8", errors="ignore")
+            if any(posible_palabra.startswith(p) for p in patrones):
+                palabra_final = posible_palabra  # Almacena la última palabra encontrada
+        return palabra_final
