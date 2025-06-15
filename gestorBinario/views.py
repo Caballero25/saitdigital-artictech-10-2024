@@ -24,7 +24,8 @@ def codificar_archivo(request, id):
         #Offsets propuestos para cambiar el nombre
         offsets_list = [0x200A0, 0x200E0, 0x21540, 0x21580, 0x292B0, 0x292F0, 0x2C630, 0x2C670, 0xA0, 0xE0, 0x10070, 0x100B0, ]
         # Ruta del archivo .bin en la carpeta 'media'
-        ruta_archivo = os.path.join(settings.MEDIA_ROOT, 'AIC_1AGWMAPP.bin')
+        #ruta_archivo = os.path.join(settings.MEDIA_ROOT, 'AIC_1AGWMAPP.bin')
+        ruta_archivo = os.path.join(settings.MEDIA_ROOT, 'V2_OPTIMIZACION.bin')
         #Nombre del módulo
         nombre_modulo = "POER"
 
